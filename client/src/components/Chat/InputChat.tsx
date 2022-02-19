@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {FieldChat} from "../../typing/Interfaces";
 
-const InputChat = ({value, change}: FieldChat) => {
+const InputChat:FC<FieldChat> = ({value, change}) => {
     return (
         <div className={'wrapper_chat_page__block_input'}>
             <input

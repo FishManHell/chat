@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Message from "./Message";
 
-const MessageList = ({array}: any) => {
+const MessageList:FC<any> = ({array}) => {
     return (
         <div className={'wrapper_chat_page__wrapper_for_itemChat'}>
             <div className={'wrapper_chat_page__block_for_itemChat'}>

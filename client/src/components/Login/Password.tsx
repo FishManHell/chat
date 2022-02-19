@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {UserPassword} from "../../typing/Interfaces";
 
-const Password = ({password}: UserPassword) => {
+const Password: FC<UserPassword> = ({password}) => {
     return (
         <div className={'wrapper_login_page__block_input'}>
             <label className={'wrapper_login_page__label_input'}>Password</label>

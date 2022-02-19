@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {UserName} from "../../typing/Interfaces";
 
 
 
-const Name = ({name}: UserName) => {
+const Name:FC<UserName> = ({name}) => {
     return (
         <div className={'wrapper_login_page__block_input'}>
             <label className={'wrapper_login_page__label_input'}>Name</label>

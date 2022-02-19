@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Name from "./Name";
 import Password from "./Password";
 import useInput from "../../hooks/useInput";
@@ -6,11 +6,10 @@ import {useLocation} from "react-router-dom";
 import {regPassword, regUser} from "../../utils/Regs";
 import {Request} from '../../typing/Interfaces'
 
-const LoginPage = ({requestPost}: Request) => {
+const LoginPage: FC<Request> = ({requestPost}) => {
     const location = useLocation();
     const name = useInput('');
     const password = useInput('');
-
 
     const handleCheckPassName = ():void => {
         const path = location.pathname

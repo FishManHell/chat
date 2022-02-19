@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import InputChat from "./InputChat";
 import SendButton from "./SendButton";
 import Logout from "./Logout";
@@ -6,7 +6,7 @@ import MessageList from "./MessageList";
 import useSocket from "../../hooks/useSocket";
 import {Token} from "../../typing/Interfaces";
 
-const Chat = ({token, clearToken}: Token) => {
+const Chat:FC<Token> = ({token, clearToken}) => {
     const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange] = useSocket('', token);
 
     function handleExitPage(): void {
