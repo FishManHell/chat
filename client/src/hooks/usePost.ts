@@ -1,9 +1,6 @@
 import {useState} from "react";
-
-interface requestTest {
-    url: string | undefined,
-    user: object | undefined
-}
+import {urlStr} from "../utils/url";
+import axios from "axios";
 
 export default function () {
     const [token, setToken] = useState<string>('');
@@ -12,16 +9,14 @@ export default function () {
 
     const clearToken = (): void => setToken('');
 
-    const requestPost = async (path: string, user: string) => {
+    const requestPost = async (path: string, user: object) => {
         setLoading(true)
         try {
             const request = await axios.post(`${urlStr}${path}`, {...user})
-            const dataToken = request.headers.authorization.split(' ')[1]
-            setToken(dataToken)
-            return dataToken
-        } catch (error) {
-            setError(error.message)
-            throw Error(error)
+            setToken(request.headers.authorization.split(' ')[1])
+        } catch (e: any) {
+            setError(e)
+            throw Error(e)
         } finally {
             setLoading(false);
         }
