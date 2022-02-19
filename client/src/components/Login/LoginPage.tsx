@@ -4,10 +4,7 @@ import Password from "./Password";
 import useInput from "../../hooks/useInput";
 import {useLocation} from "react-router-dom";
 import {regPassword, regUser} from "../../utils/Regs";
-
-interface Request {
-    requestPost: (path: string, user: object) => void
-}
+import {Request} from '../../TypeScriptTyping/Interfaces'
 
 const LoginPage = ({requestPost}: Request) => {
     const location = useLocation();
@@ -20,6 +17,8 @@ const LoginPage = ({requestPost}: Request) => {
         const user = {username: name.value, password: password.value}
         if (regUser.test(name.value) && regPassword.test(password.value)) {
             requestPost(path, user)
+        } else {
+            alert('Please try again')
         }
     }
 

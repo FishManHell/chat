@@ -10,9 +10,9 @@ app.config['SECRET_KEY'] = '^&iuhnbTY^78ouijbvty5^&*IUbgyft6&8'
 api = Api(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 CORS(app, expose_headers='Authorization')
-# установил и дописал cors а то кидало ошибку и Authorization дописал так как не мог токен достать
-# поменял запрос get на post а то с get нельзя body отправлять
-# поменял в классе Chatroom on_send на on_message бо происходит конфликт события ('send') и метода socket.send()
+# installed and added cors, otherwise it threw an error and added Authorization because I could not get the token
+# changed the get request to post, otherwise you can’t send body with get
+# changed in the Chatroom class on_send to on_message because there is a conflict between the event ('send') and the socket.send() method
 
 users = [
     {'username': 'Harry', 'password': '123456'},

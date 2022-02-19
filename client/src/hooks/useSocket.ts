@@ -8,7 +8,7 @@ type UseSocket = [Array<object>, () => void, string, () => void, (e: React.Chang
 
 export default function (initialValue: string, token: string): UseSocket {
     const [value, setValue] = useState<string>(initialValue)
-    const [arrayMessage, setArrayMessage] = useState<Array<object>>([]);
+    const [arrayMessage, setArrayMessage] = useState<Array<object> | []>([]);
     const [socketState, setSocketState] = useState<Socket | any>(null);
     const location = useLocation();
 
@@ -49,7 +49,7 @@ export default function (initialValue: string, token: string): UseSocket {
     }
 
     const sendMessageSocket = (): void => {
-        socketState.emit('message', {id: new Date().getTime(), value})
+        socketState.emit('message', {id: new Date().getTime(), value: value})
     }
 
     useEffect(() => {

@@ -1,12 +1,7 @@
 import React from 'react';
+import {ButtonSend} from "../../TypeScriptTyping/Interfaces";
 
-interface Button {
-    message: () => void,
-    text: string,
-    value: string
-}
-
-const SendButton = ({message, value, text}: Button) => {
+const SendButton = ({message, value, text}: ButtonSend) => {
     return (
         <div className={'wrapper_chat_page__block_button'}>
             <button disabled={!value.length} className={'wrapper_chat_page__button'} onClick={() => message()}>{text}</button>

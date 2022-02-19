@@ -1,8 +1,7 @@
 import {useState} from "react";
-import {urlStr} from "../utils/url";
 import axios from "axios";
-
-type UserPost = [string, string, boolean, (path: string, user: object) => void, () => void]
+import {urlStr} from "../utils/url";
+import {UserPost} from "../TypeScriptTyping/Types";
 
 
 export default function (): UserPost {

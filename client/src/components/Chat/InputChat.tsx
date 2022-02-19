@@ -1,14 +1,16 @@
 import React from 'react';
-
-interface FieldChat {
-    value: string,
-    change: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
+import {FieldChat} from "../../TypeScriptTyping/Interfaces";
 
 const InputChat = ({value, change}: FieldChat) => {
     return (
         <div className={'wrapper_chat_page__block_input'}>
-            <input value={value} type="text" className={'wrapper_chat_page__input'} placeholder={'write some text'}/>
+            <input
+                value={value}
+                type="text"
+                className={'wrapper_chat_page__input'}
+                placeholder={'write some text'}
+                onChange={e => change(e)}
+            />
         </div>
     );
 };

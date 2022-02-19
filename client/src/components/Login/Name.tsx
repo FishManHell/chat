@@ -1,11 +1,7 @@
 import React from 'react';
+import {UserName} from "../../TypeScriptTyping/Interfaces";
 
-interface UserName {
-    name: {
-        value: string,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    }
-}
+
 
 const Name = ({name}: UserName) => {
     return (

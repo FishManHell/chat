@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface UserPassword {
-    password: {
-        value: string,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    }
-}
+import {UserPassword} from "../../TypeScriptTyping/Interfaces";
 
 const Password = ({password}: UserPassword) => {
     return (
@@ -22,6 +16,5 @@ const Password = ({password}: UserPassword) => {
     );
 };
 
-// нужен пропс password
 
 export default Password;

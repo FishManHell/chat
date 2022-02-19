@@ -1,14 +1,10 @@
 import React from 'react';
 import InputChat from "./InputChat";
 import SendButton from "./SendButton";
-import Logout from "./Logout";;
-import useSocket from "../../hooks/useSocket";
+import Logout from "./Logout";
 import MessageList from "./MessageList";
-
-interface Token {
-    token: string
-    clearToken: () => void
-}
+import useSocket from "../../hooks/useSocket";
+import {Token} from "../../TypeScriptTyping/Interfaces";
 
 const Chat = ({token, clearToken}: Token) => {
     const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange] = useSocket('', token);
@@ -28,12 +24,7 @@ const Chat = ({token, clearToken}: Token) => {
                             <SendButton message={sendMessageSocket} text={'Send'} value={value}/>
                             <Logout exit={handleExitPage} text={'Logout'}/>
                         </div>
-                        <MessageList arrayMessage={arrayMessage}/>
-                        {/*<div className={'wrapper_chat_page__wrapper_for_itemChat'}>*/}
-                        {/*    <div className={'wrapper_chat_page__block_for_itemChat'}>*/}
-                        {/*        {arrayMessage.map(message =>  <Message key={message.id} {...message}/>)}*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+                        <MessageList array={arrayMessage}/>
                     </div>
                 </div>
             </div>

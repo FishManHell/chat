@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface MessageValue {
-    value: string
-}
+import {MessageValue} from "../../TypeScriptTyping/Interfaces";
 
 const Message = ({value}: MessageValue) => {
     return <p className={'wrapper_chat_page__itemChat'}>{value}</p>

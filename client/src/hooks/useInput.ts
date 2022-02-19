@@ -1,9 +1,5 @@
 import React, {useState} from "react";
-
-interface Input {
-    value: string,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
+import {Input} from "../TypeScriptTyping/Interfaces";
 
 export default function (initialValue: string): Input {
     const [value, setValue] = useState <string>(initialValue);
