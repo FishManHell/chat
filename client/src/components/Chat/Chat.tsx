@@ -1,29 +1,39 @@
 import React from 'react';
 import InputChat from "./InputChat";
 import SendButton from "./SendButton";
-import Logout from "./Logout";
-import Message from "./Message";
+import Logout from "./Logout";;
+import useSocket from "../../hooks/useSocket";
+import MessageList from "./MessageList";
 
-const Chat: React.FC = () => {
+interface Token {
+    token: string
+    clearToken: () => void
+}
+
+const Chat = ({token, clearToken}: Token) => {
+    const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange] = useSocket('', token);
+
+    function handleExitPage(): void {
+        disconnectSocket()
+        clearToken()
+    }
+
     return (
         <div className={'wrapper_chat_page'}>
             <div className={'container'}>
                 <div className={'wrapper_chat_page__wrapper_block_chat'}>
                     <div className={'wrapper_chat_page__block_input_and_button_send'}>
-                        <InputChat/>
-                    {/* props value and onChange func*/}
+                        <InputChat value={value} change={onChange}/>
                         <div className={'wrapper_chat_page__main_block_buttons'}>
-                            <SendButton/>
-                            {/*sendButton - 3 props (message, text, value */}
-                            <Logout/>
-                        {/*logout two props - exit, text*/}
+                            <SendButton message={sendMessageSocket} text={'Send'} value={value}/>
+                            <Logout exit={handleExitPage} text={'Logout'}/>
                         </div>
-                        <div className={'wrapper_chat_page__wrapper_for_itemChat'}>
-                            <div className={'wrapper_chat_page__block_for_itemChat'}>
-                            {/* тут будет map для распечатки message*/}
-                                <Message/>
-                            </div>
-                        </div>
+                        <MessageList arrayMessage={arrayMessage}/>
+                        {/*<div className={'wrapper_chat_page__wrapper_for_itemChat'}>*/}
+                        {/*    <div className={'wrapper_chat_page__block_for_itemChat'}>*/}
+                        {/*        {arrayMessage.map(message =>  <Message key={message.id} {...message}/>)}*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

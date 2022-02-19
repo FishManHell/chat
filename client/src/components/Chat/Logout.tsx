@@ -1,9 +1,14 @@
 import React from 'react';
 
-const Logout: React.FC = () => {
+interface ButtonLogout {
+    exit: () => void
+    text: string
+}
+
+const Logout = ({exit, text}: ButtonLogout) => {
     return (
         <div className={'wrapper_chat_page__block_button'}>
-            <button className={'wrapper_chat_page__button'}>Exit</button>
+            <button className={'wrapper_chat_page__button'} onClick={exit}>{text}</button>
         </div>
     );
 };

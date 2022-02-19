@@ -1,19 +1,35 @@
 import React from 'react';
 import Name from "./Name";
 import Password from "./Password";
+import useInput from "../../hooks/useInput";
+import {useLocation} from "react-router-dom";
+import {regPassword, regUser} from "../../utils/Regs";
 
-const LoginPage: React.FC = () => {
+interface Request {
+    requestPost: (path: string, user: object) => void
+}
+
+const LoginPage = ({requestPost}: Request) => {
+    const location = useLocation();
+    const name = useInput('');
+    const password = useInput('');
+
+
+    const handleCheckPassName = ():void => {
+        const path = location.pathname
+        const user = {username: name.value, password: password.value}
+        if (regUser.test(name.value) && regPassword.test(password.value)) {
+            requestPost(path, user)
+        }
+    }
+
     return (
         <div className={'wrapper_login_page'}>
             <div className={'wrapper_login_page__main_block_form'}>
-                <Name/>
-                {/*props name*/}
-                <Password/>
-                {/*props password*/}
-
+                <Name name={name}/>
+                <Password password={password}/>
                 <div className={'wrapper_login_page__block_button_form'}>
-                    <button className={'wrapper_login_page__button_form'}>Login</button>
-                {/*handleCheckPassName - onClick*/}
+                    <button className={'wrapper_login_page__button_form'} onClick={handleCheckPassName}>Login</button>
                 </div>
             </div>
         </div>

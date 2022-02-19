@@ -2,12 +2,17 @@ import {useState} from "react";
 import {urlStr} from "../utils/url";
 import axios from "axios";
 
-export default function () {
+type UserPost = [string, string, boolean, (path: string, user: object) => void, () => void]
+
+
+export default function (): UserPost {
     const [token, setToken] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
 
-    const clearToken = (): void => setToken('');
+    const clearToken = (): void => {
+        setToken('');
+    }
 
     const requestPost = async (path: string, user: object) => {
         setLoading(true)
