@@ -1,5 +1,5 @@
 import React from 'react';
-import {UserPassword} from "../../TypeScriptTyping/Interfaces";
+import {UserPassword} from "../../typing/Interfaces";
 
 const Password = ({password}: UserPassword) => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {UserName} from "../../TypeScriptTyping/Interfaces";
+import {UserName} from "../../typing/Interfaces";
 
 
 

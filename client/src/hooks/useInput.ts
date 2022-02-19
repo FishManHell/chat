@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Input} from "../TypeScriptTyping/Interfaces";
+import {Input} from "../typing/Interfaces";
 
 export default function (initialValue: string): Input {
     const [value, setValue] = useState <string>(initialValue);

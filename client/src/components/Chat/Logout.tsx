@@ -1,5 +1,5 @@
 import React from 'react';
-import {ButtonLogout} from "../../TypeScriptTyping/Interfaces";
+import {ButtonLogout} from "../../typing/Interfaces";
 
 const Logout = ({exit, text}: ButtonLogout) => {
     return (

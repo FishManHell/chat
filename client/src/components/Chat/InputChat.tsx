@@ -1,5 +1,5 @@
 import React from 'react';
-import {FieldChat} from "../../TypeScriptTyping/Interfaces";
+import {FieldChat} from "../../typing/Interfaces";
 
 const InputChat = ({value, change}: FieldChat) => {
     return (

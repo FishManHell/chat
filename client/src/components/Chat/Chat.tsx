@@ -4,7 +4,7 @@ import SendButton from "./SendButton";
 import Logout from "./Logout";
 import MessageList from "./MessageList";
 import useSocket from "../../hooks/useSocket";
-import {Token} from "../../TypeScriptTyping/Interfaces";
+import {Token} from "../../typing/Interfaces";
 
 const Chat = ({token, clearToken}: Token) => {
     const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange] = useSocket('', token);

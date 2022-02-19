@@ -4,7 +4,7 @@ import Password from "./Password";
 import useInput from "../../hooks/useInput";
 import {useLocation} from "react-router-dom";
 import {regPassword, regUser} from "../../utils/Regs";
-import {Request} from '../../TypeScriptTyping/Interfaces'
+import {Request} from '../../typing/Interfaces'
 
 const LoginPage = ({requestPost}: Request) => {
     const location = useLocation();

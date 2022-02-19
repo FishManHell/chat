@@ -1,5 +1,5 @@
 import React from 'react';
-import {ButtonSend} from "../../TypeScriptTyping/Interfaces";
+import {ButtonSend} from "../../typing/Interfaces";
 
 const SendButton = ({message, value, text}: ButtonSend) => {
     return (
