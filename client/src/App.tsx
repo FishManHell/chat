@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './App.sass'
 import {Routes, Route, Navigate} from "react-router-dom";
 import usePost from "./hooks/usePost";
@@ -6,15 +6,16 @@ import LoaderComment from "./components/Loader/LoaderComment";
 import LoginPage from "./components/Login/LoginPage";
 import Chat from "./components/Chat/Chat";
 
+type JSXNode = JSX.Element | null;
 
-const App: React.FC = () => {
+const App:FC = () => {
     const [token, error, loading, requestPost, clearToken] = usePost();
 
-    const loader = () => <LoaderComment/>;
+    const loader = ():JSXNode => <LoaderComment/>;
 
-    const component = () => <LoginPage requestPost={requestPost}/>;
+    const component = ():JSXNode => <LoginPage requestPost={requestPost}/>;
 
-    const checkLoader = () => loading ? loader() : component();
+    const checkLoader = ():JSXNode => loading ? loader() : component();
 
     return (
         <div className={'wrapper'}>

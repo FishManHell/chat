@@ -32,7 +32,6 @@ export default function (initialValue: string, token: string): UseSocket {
     function connectSocket(socket: Socket) {
         socket.on('connect', () => {
             socket.emit('success')
-            console.log('connected')
         })
     }
 
@@ -40,7 +39,6 @@ export default function (initialValue: string, token: string): UseSocket {
         socket.on('message', (data: object) => {
             setArrayMessage(prevObj => [...prevObj, data])
             setValue('')
-            console.log(data)
         })
     }
 

@@ -12,6 +12,7 @@ const Chat: FC<Token> = ({token, clearToken}) => {
     function handleExitPage(): void {
         disconnectSocket()
         clearToken()
+        console.log('You just lost chat page')
     }
 
     return (
