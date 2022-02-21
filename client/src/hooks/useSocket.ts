@@ -2,9 +2,7 @@ import {useLocation} from "react-router-dom";
 import React, {useCallback, useEffect, useState} from "react";
 import io, {Socket} from "socket.io-client";
 import {urlStr} from "../utils/url";
-
-type UseSocket = [Array<object>, () => void, string, () => void, (e: React.ChangeEvent<HTMLInputElement>) => void]
-
+import {UseSocket} from "../typing/Types";
 
 export default function (initialValue: string, token: string): UseSocket {
     const [value, setValue] = useState<string>(initialValue)
@@ -42,13 +40,9 @@ export default function (initialValue: string, token: string): UseSocket {
         })
     }
 
-    const disconnectSocket = ():void => {
-        socketState.disconnect()
-    }
+    const disconnectSocket = ():void => socketState.disconnect()
 
-    const sendMessageSocket = ():void => {
-        socketState.emit('message', {id: new Date().getTime(), value: value})
-    }
+    const sendMessageSocket = ():void => socketState.emit('message', {id: new Date().getTime(), value: value})
 
     useEffect(() => {
         if (token) {
@@ -57,22 +51,21 @@ export default function (initialValue: string, token: string): UseSocket {
     }, [token])
 
     return [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange]
-
 }
 
-// Здесь у нас кастомный хук Socket для работы с сокетами в нашем случае это function принимает 2 параметра.
-// (начальное значения и token) и return array со всеми function and state и потом деструктуризацию делаем.
-// В этом хуке есть несколько хуков и function для работы с сокетом.
-// 1. state value для работы с полем input в котором мы пишем some message и отправляем его.
-// 2. state arrayMessage state для распечатывания message которые мы получаем.
-// 3. socketState state это для работы с сокетом - в этот state положили socket и потом работаем с ним где нам нужно.
-// 4. function onChange для изменения значения в input и получения его.
-// 5. function creatConnect это основная function которая принимает hook useCallback - он принимает callback and array,
-// внутри этой function hook мы подключаемся к сокетам и передаем token и передаем в другие function socket, чтоб работать с ним.
-// 6. function connectSocket это функция, которая принимает параметром socket и мы подписываемся на socket при помощи события connect.
-// 7. function getMessageSocket это функция, которая принимает параметром socket и подписываемся на event message - это события где мы получаем message.
-// 8. function disconnectSocket в этой функции мы используем state socket и отписываемся от сокета.
-// 9. function sendMessageSocket в этой функции мы используем state socket и отправляем some message в чат
-// 10. это hook useEffect внутри него компоненты жизненного цикла - он принимает 2 параметра callback and array dependencies
-// в нашем случае мы проверяем есть ли токен и если есть то запускай function creatConnect и подписывайся на socket и следим за изменениями state token в array dependencies
+// Here we have a custom Socket hook for working with sockets, in our case this function takes 2 parameters.
+// (initial value and token) and return array with all function and state and then we do destructuring.
+// This hook has several hooks and a function to work with the socket.
+// 1. state value for working with the input field in which we write some message and send it.
+// 2. state arrayMessage state to print the messages we receive.
+// 3. socketState state is for working with a socket - we put a socket in this state and then we work with it where we need.
+// 4. function onChange to change the value in input and get it.
+// 5. function creatConnect is the main function that accepts hook useCallback - it accepts callback and array,
+// inside this function hook we connect to sockets and pass token and pass to other function socket to work with it.
+// 6. function connectSocket is a function that takes a socket as a parameter and we subscribe to the socket with the connect event.
+// 7. function getMessageSocket is a function that takes a socket as a parameter and subscribes to an event message - these are events where we receive a message.
+// 8. function disconnectSocket In this function we use the state socket and unsubscribe from the socket.
+// 9. function sendMessageSocket in this function we use state socket and send some message to chat
+// 10. this is the useEffect hook inside it lifecycle components - it takes 2 parameters callback and array dependencies
+// in our case, we check if there is a token and if so, run function creatConnect and subscribe to the socket and monitor the state token changes in the array dependencies
 

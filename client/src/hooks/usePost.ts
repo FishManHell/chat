@@ -29,14 +29,14 @@ export default function (): UserPost {
     return [token, error, loading, requestPost, clearToken]
 }
 
-// Тут у нас кастомный хук для post запроса - это function без аргументов и возвращает массив со всеми func and state в деструктуризации.
-// Хук, хранит в себе три стейта с которыми мы работаем.
-// 1. это token state - в котором мы храним response с header который получили и потом его используем в своих целях.
-// 2. это error state - в котором мы храним ошибку, если мы получили отрицательный ответ с сервера и так же используем где нам нужно.
-// 3. это loading state - создан для ленивой загрузки - чтоб во время обработки запроса и ожидания ответа, user видел какую-то загрузку - это boolean значения
-// 4. Это функция clearToken сделана для очистки state token так как когда мы выходим с профиля нам он уже не нужен больше.
-// 5. requestPost это асинхронная function которая принемает path - это ссылка для запроса and user который принимает name and password.
-// Внутри function мы используем первым делом state loading для загрузки,
-// после этого у нас есть блок try and catch в try у нас лежит асинхронный axios.post запрос, который принимает url and body в нашем случае
-// И возвращает response - в нашем случае нас интересует header так как там лежит token. Ложем в state token и работаем с ним
-// Если ответ пришел плохой, то автоматически попадает в catch и мы выводим ошибку и ложем в стейт чтоб потом вывести на экран.
+// Here we have a custom hook for the post request - this is a function with no arguments and returns an array with all the func and state in the destructuring.
+// Hook stores three states with which we work.
+// 1. This is a token state - in which we store the response with the header that we received and then use it for our own purposes.
+// 2. this is the error state - in which we store the error if we received a negative response from the server and also use it where we need it.
+// 3. this loading state - created for lazy loading - so that during the processing of the request and waiting for a response, the user sees some kind of loading - these are boolean values
+// 4. This clearToken function is made to clear the state token, since when we exit the profile, we no longer need it.
+// 5. requestPost is an asynchronous function that accepts path is a link for the request and user that accepts a name and password.
+// Inside the function, we first use state loading to load,
+// after that we have a try and catch block in try we have an asynchronous axios.post request that takes url and body in our case
+// And it returns a response - in our case, we are interested in the header, since the token is there. We lay down in the state token and work with it
+// If the response is bad, it automatically falls into the catch and we display an error and put it in the state so that we can display it later.

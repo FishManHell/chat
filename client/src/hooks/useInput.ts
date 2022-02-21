@@ -11,10 +11,10 @@ export default function (initialValue: string): Input {
     return {value, onChange}
 }
 
-// Это кастомный хук, который работает с хуками React и сделан для полей авторизации и принимает начальное значения
-// В нашем случае это строка
-// 1. У нас есть стейт value в котором будем хранить значения
-// 2. У нас есть function onChange которая принимает события и кладет его в стейт.
-// Таким образом мы создали универсальной хук который мы можем использовать везде
-// Примеры можно увидеть в папке Login в файле LoginPage на 10 и 11 строке
+// This is a custom hook that works with React hooks and is made for authorization fields and accepts initial values
+// In our case, this is the line
+// 1. We have a value state in which we will store values
+// 2. We have a function onChange that takes events and puts it in a state.
+// Thus, we have created a universal hook that we can use everywhere.
+// Examples can be seen in the Login folder in the Login Page file on lines 10 and 11
 
