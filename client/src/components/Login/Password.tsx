@@ -18,3 +18,6 @@ const Password: FC<UserPassword> = ({password}) => {
 
 
 export default Password;
+
+// Это у нас Input компонент Password
+// Здесь мы используем кастомный хук для контролирования компонента поля password

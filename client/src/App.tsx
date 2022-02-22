@@ -5,17 +5,16 @@ import usePost from "./hooks/usePost";
 import LoaderComment from "./components/Loader/LoaderComment";
 import LoginPage from "./components/Login/LoginPage";
 import Chat from "./components/Chat/Chat";
-
-type JSXNode = JSX.Element | null;
+import {JSXNode} from "./typing/Types";
 
 const App:FC = () => {
     const [token, error, loading, requestPost, clearToken] = usePost();
 
     const loader = ():JSXNode => <LoaderComment/>;
 
-    const component = ():JSXNode => <LoginPage requestPost={requestPost}/>;
+    const componentLogin = ():JSXNode => <LoginPage requestPost={requestPost}/>;
 
-    const checkLoader = ():JSXNode => loading ? loader() : component();
+    const checkLoader = ():JSXNode => loading ? loader() : componentLogin();
 
     return (
         <div className={'wrapper'}>
@@ -32,5 +31,16 @@ const App:FC = () => {
         </div>
     );
 };
-
 export default App;
+
+
+//Это начальный компонент где у нас проходит роутинг,
+// где мы проверяем существует ли у нас token и если до то показываем
+// одну страницу и если нет то оставляем прежнюю, кастомный хук usePost
+// в котором обрабатываться post request,
+// присутствует ленивая загрузка которая обрабатывает ожидания ответа с сервера
+// есть несколько func.
+// 1. loader func с компонентом ленивой загрузки.
+// 2. func componentLogin, где вызываю компонент LoginPage.
+// 3. func где я проверяю if loader true то показываю ленивую загрузку м если false то компонент LoginPage
+// 4. Так же у нас есть в роутинге можно сказать redirect, но в новой версии называется по другому сейчас - Navigate

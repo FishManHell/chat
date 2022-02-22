@@ -6,9 +6,9 @@ const LoaderComment: React.FC = () => {
         <div className={'wrapper_loader'}>
             <ClipLoader color={'green'} size={300}/>
         </div>
-
-
     );
 };
 
 export default LoaderComment;
+
+// Это компонент с ленивой загрузкой для авторизации которую взял из библиотеки react-spinners

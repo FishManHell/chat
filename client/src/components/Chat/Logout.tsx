@@ -10,3 +10,8 @@ const Logout:FC<ButtonLogout> = ({exit, text}: ButtonLogout) => {
 };
 
 export default Logout;
+
+// Button Logout для отпистки user от сокета и переход на предыдущую страницу
+// Принимает 2 пропса
+// 1. func exit для выхода из /chat page
+// 2. text - значения которое принимает button

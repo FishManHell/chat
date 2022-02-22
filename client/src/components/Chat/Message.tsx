@@ -6,3 +6,7 @@ const Message:FC<MessageValue> = ({value}) => {
 };
 
 export default Message;
+
+
+// Компонент Message это компонент, который выводит на экран func array.map в компоненте чуть выше.
+// Компонент принимает Value это то значения которое выводиться на экран для, user

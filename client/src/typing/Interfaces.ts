@@ -1,5 +1,8 @@
 import React from "react";
 
+// Здесь у нас лежат interface для типизации пропсов и всяких значений которые есть в проекте
+
+
 export interface Request {
     requestPost: (path: string, user: object) => void
 }

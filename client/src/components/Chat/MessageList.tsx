@@ -12,3 +12,8 @@ const MessageList:FC<any> = ({array}) => {
 };
 
 export default MessageList;
+
+
+// Компонент MessageList где у нас происходит отрисовка всех наших messages которые иы отправили или получили
+// Компонент принимает 1 пропс
+// выводим на экран при помощи map это метод для работы с array

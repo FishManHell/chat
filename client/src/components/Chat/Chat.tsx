@@ -26,7 +26,6 @@ const Chat: FC<Token> = ({token, clearToken}) => {
                                 <SendButton message={sendMessageSocket} text={'Send'} value={value}/>
                                 <Logout exit={handleExitPage} text={'Logout'}/>
                             </div>
-
                         </div>
                         <MessageList array={arrayMessage}/>
                     </div>
@@ -37,3 +36,14 @@ const Chat: FC<Token> = ({token, clearToken}) => {
 };
 
 export default Chat;
+
+// Это у нас компонент Chat - он принимает 2 пропса это token и func для очистки стейта токена.
+// Так же здесь мы диcтруктуризируем все из кастомного хука useSocket и отдаем два значения которые он принимает
+// Со всеми значениями с хука мы работаем.
+// Так же есть у нас func handleExitPage которая выходит из страницы /chat, делает отписку от, socket и очищает поле token
+// Еще есть 4 компонента
+// 1. InputChat - компонент с полем чат где мы пишем message - принимает два пропса для контролирования value
+// 2. SendButton - компонент с кнопкой которая отправляет message - принимает props func - sendMessageSocket.
+// 3. button Logout которая обнуляет стейт token, func disconnectSocket которая отписывается от, socket.
+// 4. MessageList это компонент где мы отрисовуем в message которые мы отправили ну или получили,
+// в данном случае которые отправили
