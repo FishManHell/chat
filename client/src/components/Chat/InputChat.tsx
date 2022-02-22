@@ -18,6 +18,6 @@ const InputChat:FC<FieldChat> = ({value, change}) => {
 export default InputChat;
 
 
-// контролируемы компонент InputChat - принимает два пропса
-// 1. значения
-// 2. func change для контролируемой работы input
+// controllable component InputChat - takes two props
+// 1. value
+// 2. func change for controlled operation of input

@@ -11,8 +11,9 @@ const SendButton:FC<ButtonSend> = ({message, value, text}) => {
 
 export default SendButton
 
-// компонент SendButton - принимает 3 props
-// 1. func message для отправки сообщения
-// 2. value - для того чтоб disabled кнопки сделать - типа,
-// что если значения еще нет то ты не сможешь нажать на эту кнопку
-// text это просто значения которая принимает button кнопка
+// SendButton component - takes 3 props
+// 1. func message to send a message
+// 2. value - in order to make disabled buttons - like,
+// that if there is no value yet, you won't be able to click on this button
+// text is just the values that button takes
+

@@ -33,14 +33,14 @@ const App:FC = () => {
 };
 export default App;
 
+//This is the initial component where we have routing,
+// where we check if we have a token and if so, show
+// one page and if not, then leave the old, custom hook usePost
+// in which the post request is processed,
+// there is lazy loading that handles waiting for a response from the server
+// there are several func.
+// 1. loader func with a lazy loading component.
+// 2. func componentLogin where I call the LoginPage component.
+// 3. func where I check if loader true then show lazy loading and if false then LoginPage component
+// 4. We can also say redirect in the routing, but in the new version it is called differently now - Navigate
 
-//Это начальный компонент где у нас проходит роутинг,
-// где мы проверяем существует ли у нас token и если до то показываем
-// одну страницу и если нет то оставляем прежнюю, кастомный хук usePost
-// в котором обрабатываться post request,
-// присутствует ленивая загрузка которая обрабатывает ожидания ответа с сервера
-// есть несколько func.
-// 1. loader func с компонентом ленивой загрузки.
-// 2. func componentLogin, где вызываю компонент LoginPage.
-// 3. func где я проверяю if loader true то показываю ленивую загрузку м если false то компонент LoginPage
-// 4. Так же у нас есть в роутинге можно сказать redirect, но в новой версии называется по другому сейчас - Navigate

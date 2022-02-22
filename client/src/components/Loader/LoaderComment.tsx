@@ -11,4 +11,4 @@ const LoaderComment: React.FC = () => {
 
 export default LoaderComment;
 
-// Это компонент с ленивой загрузкой для авторизации которую взял из библиотеки react-spinners
+// This is a lazy-loaded authorization component taken from the react-spinners library

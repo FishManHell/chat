@@ -1,7 +1,7 @@
 import React from "react";
 
 
-// Здесь у нас лежат type для типизации пропсов и всяких значений которые есть в проекте
+// Here we have type for typing props and any values that are in the project
 
 
 export type UserPost = [string, string, boolean, (path: string, user: object) => void, () => void]

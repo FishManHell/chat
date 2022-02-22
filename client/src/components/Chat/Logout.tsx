@@ -11,7 +11,7 @@ const Logout:FC<ButtonLogout> = ({exit, text}: ButtonLogout) => {
 
 export default Logout;
 
-// Button Logout для отпистки user от сокета и переход на предыдущую страницу
-// Принимает 2 пропса
-// 1. func exit для выхода из /chat page
-// 2. text - значения которое принимает button
+// Button Logout to unsubscribe user from the socket and go to the previous page
+// Takes 2 props
+// 1. func exit to exit /chat page
+// 2. text - the value that the button takes

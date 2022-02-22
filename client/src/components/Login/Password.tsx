@@ -19,5 +19,5 @@ const Password: FC<UserPassword> = ({password}) => {
 
 export default Password;
 
-// Это у нас Input компонент Password
-// Здесь мы используем кастомный хук для контролирования компонента поля password
+// This is our Input component Password
+// Here we use a custom hook to control the password field component

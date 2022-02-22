@@ -18,7 +18,5 @@ const Name:FC<UserName> = ({name}) => {
 
 export default Name;
 
-
-// Это у нас Input компонент Name
-// Здесь мы используем кастомный хук для контролирования компонента поля name
-
+// This is our Input component Name
+// Here we use a custom hook to control the name field component

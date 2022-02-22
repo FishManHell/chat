@@ -36,9 +36,9 @@ const LoginPage: FC<Request> = ({requestPost}) => {
 
 export default LoginPage;
 
-// Это у нас Логин компонент и принимает, он requestPost c кастомного хука usePost которая состоит из вызова костомного хука useInout для input полей,
-// хука location что достать pathname
-// function handleCheckPassName для отправки и проверки на актуальность узера на сервере.
-// Внутри функции стоит проверка в виде регулярных выражений которые проверяют name and password - подходи ли он по все критериям или нет
-// компонент состоит из компонента name, password and button Login
+// This is our Login component and it accepts requestPost from a custom hook usePost which consists of calling the custom hook useInout for input fields,
+// hook location to get pathname
+// function handleCheckPassName to send and check if the user is up to date on the server.
+// Inside the function there is a check in the form of regular expressions that check name and password - whether it fits all the criteria or not
+// the component consists of the component name, password and button Login
 
