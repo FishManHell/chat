@@ -8,6 +8,7 @@ import {Token} from "../../typing/Interfaces";
 
 const Chat: FC<Token> = ({token, clearToken}) => {
     const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange] = useSocket('', token);
+    console.log(arrayMessage)
 
     function handleExitPage(): void {
         disconnectSocket()

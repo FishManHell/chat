@@ -42,7 +42,7 @@ const LoginPage: FC<Request> = ({requestPost}) => {
 
 export default LoginPage;
 
-// This is our Login component and it accepts requestPost from a custom hook usePost which consists of calling the custom hook useInout for input fields,
+// This is our Login component, and it accepts requestPost from a custom hook usePost which consists of calling the custom hook useInout for input fields,
 // hook location to get pathname
 // function handleCheckPassName to send and check if the user is up to date on the server.
 // Inside the function there is a check in the form of regular expressions that check name and password - whether it fits all the criteria or not

@@ -10,7 +10,7 @@ export const initialState: object = {
 export const checkYup:object = {
     userName: Yup.string().trim().required('Required').matches(regName, 'You write the wrong name'),
     password: Yup.string().trim().required('Required').matches(regPass, 'Try to write again'),
-    repeatPassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required('Password confirmation is required!')
+    repeatPassword: Yup.string().oneOf([Yup.ref("password"), null], "Passwords must match").required('Required')
 }
 
 

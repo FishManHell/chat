@@ -1,20 +1,14 @@
 import React, {FC} from 'react';
 import {ErrorMessage, Field} from "formik";
+import {InputLogin} from "../../typing/Interfaces";
 
-interface Input {
-    type: string
-    name: string
-    placeholder: string,
-    classCss: string
-}
-
-const InputBlock: FC<Input> = ({type, name, placeholder, classCss}) => {
+const InputBlock: FC<InputLogin> = ({type, name, placeholder, classCss}) => {
     return (
         <div className={'input_block'}>
             <div className={'input_wrapper'}>
                 <Field type={type} name={name} className={classCss} placeholder={placeholder}/>
             </div>
-            <ErrorMessage name={name} component={'div'} className={'error_block'}/>
+            <ErrorMessage name={name} component={'span'} className={'error_block'}/>
         </div>
     );
 };

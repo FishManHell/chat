@@ -6,16 +6,17 @@ export interface Request {
     requestPost: (path: string, user: object) => void
 }
 
-export interface Input {
-    value: string,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
-
 export interface Token {
     token: string
     clearToken: () => void
 }
 
+export interface InputLogin {
+    type: string
+    name: string
+    placeholder: string,
+    classCss: string
+}
 
 export interface FieldChat {
     value: string,
@@ -35,11 +36,4 @@ export interface ButtonLogout {
 
 export interface MessageValue {
     value: string
-}
-
-export interface ObjInput {
-    type: string,
-    name: string,
-    placeholder: string,
-    classCss: string
 }
