@@ -1,34 +1,40 @@
 import React, {FC} from 'react';
-import Name from "./Name";
-import Password from "./Password";
-import useInput from "../../hooks/useInput";
 import {useLocation} from "react-router-dom";
-import {regPassword, regUser} from "../../utils/Regs";
 import {Request} from '../../typing/Interfaces'
+import {Form, Formik, FormikValues} from "formik";
+import {arrayInputs, checkYup, initialState} from "../../utils/YupFormikUtils";
+import * as Yup from "yup";
+import InputBlock from "./InputBlock";
+import ButtonForm from "./ButtonForm";
 
 const LoginPage: FC<Request> = ({requestPost}) => {
     const location = useLocation();
-    const name = useInput('');
-    const password = useInput('');
 
-    const handleCheckPassName = ():void => {
+    const handleCheckPassName = (values: FormikValues):void => {
         const path = location.pathname
-        const user = {username: name.value, password: password.value}
-        if (regUser.test(name.value) && regPassword.test(password.value)) {
-            requestPost(path, user)
-        } else {
-            alert('Please try again')
-        }
+        const user = {username: values.userName, password: values.password}
+        requestPost(path, user)
     }
 
     return (
         <div className={'wrapper_login_page'}>
             <div className={'wrapper_login_page__main_block_form'}>
-                <Name name={name}/>
-                <Password password={password}/>
-                <div className={'wrapper_login_page__block_button_form'}>
-                    <button className={'wrapper_login_page__button_form'} onClick={handleCheckPassName}>Login</button>
-                </div>
+                <Formik
+                    initialValues={{...initialState}}
+                    validationSchema={Yup.object({...checkYup})}
+                    onSubmit={(values, {setSubmitting}) => {
+                        setSubmitting(false)
+                        handleCheckPassName(values)
+                        console.log(values)
+                    }}
+                >
+                    {formik => (
+                        <Form>
+                            {arrayInputs.map(input => <InputBlock key={input.name} {...input}/>)}
+                            <ButtonForm formik={formik}/>
+                        </Form>
+                    )}
+                </Formik>
             </div>
         </div>
     );

@@ -2,23 +2,8 @@ import React from "react";
 
 // Here we have an interface for typing props and any values that are in the project
 
-
 export interface Request {
     requestPost: (path: string, user: object) => void
-}
-
-export interface UserName {
-    name: {
-        value: string,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    }
-}
-
-export interface UserPassword {
-    password: {
-        value: string,
-        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    }
 }
 
 export interface Input {
@@ -50,4 +35,11 @@ export interface ButtonLogout {
 
 export interface MessageValue {
     value: string
+}
+
+export interface ObjInput {
+    type: string,
+    name: string,
+    placeholder: string,
+    classCss: string
 }
