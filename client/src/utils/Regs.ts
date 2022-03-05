@@ -1,6 +1,3 @@
-export const regPassword = /[a-zA-Z0-9]/g
-export const regUser = /^[A-Z]{1}[a-z]{2,10}$/g
-
 export const regName = /^([A-Z]{1})([a-zA-Z0-9]{2,10})$/g
 export const regPass = /^[a-zA-Z0-9]{3,15}$/g
 
