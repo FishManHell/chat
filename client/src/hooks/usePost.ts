@@ -2,22 +2,26 @@ import {useState} from "react";
 import axios from "axios";
 import {urlStr} from "../utils/url";
 import {UserPost} from "../typing/Types";
+import {tokenName} from "../typing/Interfaces";
 
 
 export default function (): UserPost {
-    const [token, setToken] = useState<string>('');
+    const [tokenName, setTokenName] = useState<tokenName> ({token: '', fullName: ''});
     const [error, setError] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
 
     const clearToken = (): void => {
-        setToken('');
+        setTokenName({token: '', fullName: ''});
     }
 
     const requestPost = async (path: string, user: object) => {
         setLoading(true)
         try {
             const request = await axios.post(`${urlStr}${path}`, {...user})
-            setToken(request.headers.authorization.split(' ')[1])
+            setTokenName(
+                {token: request.headers.authorization.split(' ')[1],
+                    fullName: JSON.parse(request.config.data).username}
+            )
         } catch (e: any) {
             setError(e)
             throw Error(e)
@@ -26,7 +30,7 @@ export default function (): UserPost {
         }
     }
 
-    return [token, error, loading, requestPost, clearToken]
+    return [tokenName, error, loading, requestPost, clearToken]
 }
 
 // Here we have a custom hook for the post request - this is a function with no arguments and returns an array with all the func and state in the destructuring.

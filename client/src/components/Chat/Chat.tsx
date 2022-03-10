@@ -6,9 +6,8 @@ import MessageList from "./MessageList";
 import useSocket from "../../hooks/useSocket";
 import {Token} from "../../typing/Interfaces";
 
-const Chat: FC<Token> = ({token, clearToken}) => {
-    const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange] = useSocket('', token);
-    console.log(arrayMessage)
+const Chat: FC<Token> = ({token, name, clearToken}) => {
+    const [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange, removeItemChat] = useSocket('', token);
 
     function handleExitPage(): void {
         disconnectSocket()
@@ -18,7 +17,11 @@ const Chat: FC<Token> = ({token, clearToken}) => {
 
     return (
         <div className={'wrapper_chat_page'}>
-            <div className={'container'}>
+            <div className={'container container_chat'}>
+
+                <div className={'wrapper_chat_page__main_block_name'}>
+                    <h1 className={'wrapper_chat_page__header_text'}>{name}</h1>
+                </div>
                 <div className={'wrapper_chat_page__wrapper_block_chat'}>
                     <div className={'wrapper_chat_page__block_input_and_button_send'}>
                         <div className={'wrapper_chat_page__wrapper_input_buttons'}>
@@ -28,7 +31,7 @@ const Chat: FC<Token> = ({token, clearToken}) => {
                                 <Logout exit={handleExitPage} text={'Logout'}/>
                             </div>
                         </div>
-                        <MessageList array={arrayMessage}/>
+                        <MessageList array={arrayMessage} removeItemChat={removeItemChat}/>
                     </div>
                 </div>
             </div>

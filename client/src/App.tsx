@@ -8,7 +8,7 @@ import Chat from "./components/Chat/Chat";
 import {JSXNode} from "./typing/Types";
 
 const App:FC = () => {
-    const [token, error, loading, requestPost, clearToken] = usePost();
+    const [tokenName, error, loading, requestPost, clearToken] = usePost();
 
     const loader = ():JSXNode => <LoaderComment/>;
 
@@ -20,12 +20,12 @@ const App:FC = () => {
         <div className={'wrapper'}>
             <div className={'container'}>
                 <Routes>
-                    {token ?
-                        <Route path={'chat'} element={<Chat token={token} clearToken={clearToken}/>}/>
+                    {tokenName.token ?
+                        <Route path={'chat'} element={<Chat token={tokenName.token} name={tokenName.fullName} clearToken={clearToken}/>}/>
                         :
                         <Route path={'login'} element={checkLoader()}/>
                     }
-                    <Route path={'*'} element={<Navigate to={token ? 'chat' : 'login'}/>}/>
+                    <Route path={'*'} element={<Navigate to={tokenName.token ? 'chat' : 'login'}/>}/>
                 </Routes>
             </div>
         </div>

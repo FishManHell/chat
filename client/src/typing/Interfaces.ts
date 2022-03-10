@@ -8,6 +8,7 @@ export interface Request {
 
 export interface Token {
     token: string
+    name: string
     clearToken: () => void
 }
 
@@ -36,4 +37,11 @@ export interface ButtonLogout {
 
 export interface MessageValue {
     value: string
+    index: number
+    remove: (numberItem: number) => void
+}
+
+export interface tokenName {
+    token: string
+    fullName: string
 }

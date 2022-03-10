@@ -15,6 +15,18 @@ export default function (initialValue: string, token: string): UseSocket {
         setValue(values)
     }
 
+    const removeItemChat = (numberItem: number): void => {
+        const array = [...arrayMessage]
+        // @ts-ignore
+        const index = array.indexOf(numberItem)
+        if (index !== -1){
+            array.splice(index, 1)
+        }
+        console.log(index, numberItem)
+        console.log(array)
+        setArrayMessage(array)
+    }
+
     const creatConnect = useCallback((token: string):void => {
         const socket = io(`${urlStr}${location.pathname}`, {
             forceNew: true,
@@ -50,7 +62,7 @@ export default function (initialValue: string, token: string): UseSocket {
         }
     }, [token])
 
-    return [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange]
+    return [arrayMessage, sendMessageSocket, value, disconnectSocket, onChange, removeItemChat]
 }
 
 // Here we have a custom Socket hook for working with sockets, in our case this function takes 2 parameters.
