@@ -18,7 +18,6 @@ const Chat: FC<Token> = ({token, name, clearToken}) => {
     return (
         <div className={'wrapper_chat_page'}>
             <div className={'container container_chat'}>
-
                 <div className={'wrapper_chat_page__main_block_name'}>
                     <h1 className={'wrapper_chat_page__header_text'}>{name}</h1>
                 </div>

@@ -8,11 +8,13 @@ import Chat from "./components/Chat/Chat";
 import {JSXNode} from "./typing/Types";
 
 const App:FC = () => {
-    const [tokenName, error, loading, requestPost, clearToken] = usePost();
+    const [tokenName, error, loading, requestPost, clearToken, clearErrorState, checkError] = usePost();
 
     const loader = ():JSXNode => <LoaderComment/>;
 
-    const componentLogin = ():JSXNode => <LoginPage requestPost={requestPost}/>;
+    const componentLogin = ():JSXNode => {
+        return <LoginPage requestPost={requestPost} error={error} clearError={clearErrorState} checkError={checkError}/>;
+    }
 
     const checkLoader = ():JSXNode => loading ? loader() : componentLogin();
 
@@ -21,7 +23,9 @@ const App:FC = () => {
             <div className={'container'}>
                 <Routes>
                     {tokenName.token ?
-                        <Route path={'chat'} element={<Chat token={tokenName.token} name={tokenName.fullName} clearToken={clearToken}/>}/>
+                        <Route path={'chat'} element={
+                            <Chat token={tokenName.token} name={tokenName.fullName} clearToken={clearToken}/>
+                        }/>
                         :
                         <Route path={'login'} element={checkLoader()}/>
                     }

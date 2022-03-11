@@ -5,7 +5,7 @@ const MessageList:FC<any> = ({array, removeItemChat}) => {
     return (
         <div className={'wrapper_chat_page__wrapper_for_itemChat'}>
             <div className={'wrapper_chat_page__block_for_itemChat'}>
-                {array.map((message: any, index: number) =>  <Message key={message.id} index={index} {...message} remove={removeItemChat}/>)}
+                {array.map((message: any) =>  <Message key={message.id} {...message} remove={removeItemChat}/>)}
             </div>
         </div>
     );

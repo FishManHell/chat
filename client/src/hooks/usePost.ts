@@ -4,14 +4,20 @@ import {urlStr} from "../utils/url";
 import {UserPost} from "../typing/Types";
 import {tokenName} from "../typing/Interfaces";
 
-
 export default function (): UserPost {
     const [tokenName, setTokenName] = useState<tokenName> ({token: '', fullName: ''});
     const [error, setError] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    const [checkError, setCheck] = useState<boolean>(true);
+
 
     const clearToken = (): void => {
         setTokenName({token: '', fullName: ''});
+    }
+
+    const clearErrorState = (): void => {
+        setError('');
+        setCheck(false);
     }
 
     const requestPost = async (path: string, user: object) => {
@@ -24,13 +30,12 @@ export default function (): UserPost {
             )
         } catch (e: any) {
             setError(e)
-            throw Error(e)
         } finally {
             setLoading(false);
         }
     }
 
-    return [tokenName, error, loading, requestPost, clearToken]
+    return [tokenName, error, loading, requestPost, clearToken, clearErrorState, checkError]
 }
 
 // Here we have a custom hook for the post request - this is a function with no arguments and returns an array with all the func and state in the destructuring.

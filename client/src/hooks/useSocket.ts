@@ -10,24 +10,23 @@ export default function (initialValue: string, token: string): UseSocket {
     const [socketState, setSocketState] = useState<Socket | any>(null);
     const location = useLocation();
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const values = e.target.value
         setValue(values)
     }
 
-    const removeItemChat = (numberItem: number): void => {
+    const removeItemChat = (id: number): void => {
         const array = [...arrayMessage]
         // @ts-ignore
-        const index = array.indexOf(numberItem)
-        if (index !== -1){
+        const index = array.findIndex(item => item.id === id) // fix this problem
+        console.log(index)
+        if (index !== -1) {
             array.splice(index, 1)
         }
-        console.log(index, numberItem)
-        console.log(array)
         setArrayMessage(array)
     }
 
-    const creatConnect = useCallback((token: string):void => {
+    const creatConnect = useCallback((token: string): void => {
         const socket = io(`${urlStr}${location.pathname}`, {
             forceNew: true,
             reconnection: true,
@@ -52,9 +51,9 @@ export default function (initialValue: string, token: string): UseSocket {
         })
     }
 
-    const disconnectSocket = ():void => socketState.disconnect()
+    const disconnectSocket = (): void => socketState.disconnect()
 
-    const sendMessageSocket = ():void => socketState.emit('message', {id: new Date().getTime(), value: value})
+    const sendMessageSocket = (): void => socketState.emit('message', {id: new Date().getTime(), value: value})
 
     useEffect(() => {
         if (token) {
